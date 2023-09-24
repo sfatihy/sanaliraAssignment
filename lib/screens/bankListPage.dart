@@ -83,6 +83,9 @@ class BankListPage extends StatelessWidget {
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.done) {
                     if (snapshot.hasData) {
+
+                      List<Datum> banks = snapshot.data!.data;
+
                       return Expanded(
                         child: ListView.builder(
                           itemCount: snapshot.data?.data.length,
@@ -95,7 +98,7 @@ class BankListPage extends StatelessWidget {
                               margin: EdgeInsets.only(bottom: 10),
                               child: ListTile(
                                 leading: Image.asset(logo),
-                                title: Text(snapshot.data?.data[index]["bankName"], style: Theme.of(context).textTheme.titleMedium?.copyWith(color: Color(0xFF141C2D), fontWeight: FontWeight.w600, fontSize: 12),),
+                                title: Text(banks[index].bankName, style: Theme.of(context).textTheme.titleMedium?.copyWith(color: Color(0xFF141C2D), fontWeight: FontWeight.w600, fontSize: 12),),
                                 subtitle: Text(bodyText2, style: Theme.of(context).textTheme.bodyText2?.copyWith(fontSize: 12)),
                                 onTap: () {
                                   showModalBottomSheet(
@@ -106,9 +109,9 @@ class BankListPage extends StatelessWidget {
                                     backgroundColor: Colors.white,
                                     builder: (BuildContext context) {
                                     return CustomBottomSheet(
-                                      bankAccountName: snapshot.data?.data[index]["bankAccountName"],
-                                      bankIban: snapshot.data?.data[index]["bankIban"],
-                                      descriptionNo: snapshot.data?.data[index]["descriptionNo"],
+                                      bankAccountName: banks[index].bankAccountName,
+                                      bankIban: banks[index].bankIban,
+                                      descriptionNo: banks[index].descriptionNo,
                                     );
                                   });
                                 },

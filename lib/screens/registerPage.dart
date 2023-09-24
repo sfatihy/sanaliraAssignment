@@ -58,7 +58,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
   Future isUser() async {
     if(await context.read<BankProvider>().isUserLogIn() == true) {
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => BankListPage()));
+      Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => BankListPage()), (route) => false,);
     }
   }
 

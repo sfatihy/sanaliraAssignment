@@ -8,7 +8,7 @@ void main() {
 
   SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(
-        statusBarColor: Colors.transparent,
+        statusBarColor: Colors.black,
         statusBarBrightness: Brightness.light,
         statusBarIconBrightness: Brightness.light,
         systemNavigationBarColor: Colors.black,
@@ -72,6 +72,14 @@ class MyApp extends StatelessWidget {
           hintStyle: TextStyle(
             color: Colors.white
           ),
+        ),
+        appBarTheme: AppBarTheme(
+          systemOverlayStyle: SystemUiOverlayStyle(
+            statusBarColor: Colors.black,
+            statusBarBrightness: Brightness.light,
+            statusBarIconBrightness: Brightness.light,
+          ),
+          backgroundColor: Colors.white,
         )
       ),
       home: RegisterPage(),

@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:sanalira_example/model/bankModel.dart';
@@ -33,9 +34,11 @@ class BankProvider with ChangeNotifier {
     print(data);
 
     if(data == null) {
+      log("User not logged in");
       return false;
     }
     else {
+      log("User logged in!");
       return true;
     }
 
